@@ -16,7 +16,7 @@ namespace Practica4.Models
           [Required]
         public string Foto { get; set; }
         public DateTime FechaRegistro { get; set; }
-        public Comentario Cometario { get; set; }
+        public Comentario Comentario { get; set; }
         public int ComentarioId { get; set; }
 
         public Imagen(){
