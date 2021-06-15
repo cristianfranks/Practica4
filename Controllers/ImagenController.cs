@@ -1,12 +1,13 @@
+using System.Linq;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Practica4.Models;
 
 namespace Practica4.Controllers
 {
-    public class ImagenController
+    public class ImagenController : Controller
     {
-        {
         private readonly ImagenContext _context;
         public ImagenController(ImagenContext context)
         {
