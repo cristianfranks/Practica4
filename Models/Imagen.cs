@@ -9,10 +9,6 @@ namespace Practica4.Models
         [Required]
           [Display(Name="Nombre de Usuario")]
         public string Nombre { get; set; }
-
-        [Required]
-          [Display(Name="Lugar de Compra")]
-        public string TituloFoto { get; set; }
           [Required]
         public string Foto { get; set; }
         public DateTime FechaRegistro { get; set; }

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Practica4.Models;
 
@@ -11,15 +12,18 @@ namespace Practica4.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ImagenContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ImagenContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
+             var imagenes = _context.Imagenes.Include(x => x.Comentario)
+                                                .Where(x => x.FechaRegistro.AddDays(5) >= DateTime.Now)
+                                                .ToList();
             return View();
         }
 
@@ -27,6 +31,7 @@ namespace Practica4.Controllers
         {
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
