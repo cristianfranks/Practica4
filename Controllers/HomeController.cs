@@ -24,7 +24,7 @@ namespace Practica4.Controllers
              var imagenes = _context.Imagenes.Include(x => x.Comentario)
                                                 .Where(x => x.FechaRegistro.AddDays(5) >= DateTime.Now)
                                                 .ToList();
-            return View();
+            return View(imagenes);
         }
 
         public IActionResult Privacy()
